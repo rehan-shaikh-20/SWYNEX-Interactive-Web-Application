@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SWYNEX Task Manager - Interactive web application">
+  <title>SWYNEX Task Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">S</div>
+        <div>
+          <strong>SWYNEX</strong>
+          <span>Task Manager</span>
+        </div>
+      </div>
+
+      <nav class="side-nav" aria-label="Main navigation">
+        <a class="nav-item active" href="#dashboard">▦ <span>Dashboard</span></a>
+        <a class="nav-item" href="#tasks">✓ <span>My Tasks</span></a>
+        <a class="nav-item" href="#progress">◔ <span>Progress</span></a>
+      </nav>
+
+      <div class="sidebar-note">
+        <strong>Stay productive</strong>
+        <p>Small steps every day lead to big results.</p>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">PERSONAL WORKSPACE</p>
+          <h1>Good day! 👋</h1>
+        </div>
+        <button class="avatar" id="profileButton" type="button" aria-label="Profile">A</button>
+      </header>
+
+      <section id="dashboard" class="stats-grid" aria-label="Task statistics">
+        <article class="stat-card">
+          <div class="stat-icon">▦</div>
+          <div><span>Total Tasks</span><strong id="totalCount">0</strong></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon">◷</div>
+          <div><span>Active</span><strong id="activeCount">0</strong></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon">✓</div>
+          <div><span>Completed</span><strong id="completedCount">0</strong></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon">%</div>
+          <div><span>Progress</span><strong id="progressCount">0%</strong></div>
+        </article>
+      </section>
+
+      <section class="workspace" id="tasks">
+        <div class="section-head">
+          <div>
+            <h2>My Tasks</h2>
+            <p>Create, organize and track your work.</p>
+          </div>
+          <button class="primary-btn" id="openModalBtn" type="button">＋ Add New Task</button>
+        </div>
+
+        <div class="toolbar">
+          <label class="search-box">
+            <span>⌕</span>
+            <input id="searchInput" type="search" placeholder="Search tasks..." aria-label="Search tasks">
+          </label>
+          <div class="filters" role="group" aria-label="Task filters">
+            <button class="filter-btn active" data-filter="all" type="button">All</button>
+            <button class="filter-btn" data-filter="active" type="button">Active</button>
+            <button class="filter-btn" data-filter="completed" type="button">Completed</button>
+          </div>
+          <select id="priorityFilter" class="select-control" aria-label="Filter by priority">
+            <option value="all">All priorities</option>
+            <option value="high">High priority</option>
+            <option value="medium">Medium priority</option>
+            <option value="low">Low priority</option>
+          </select>
+        </div>
+
+        <div id="taskList" class="task-list" aria-live="polite"></div>
+        <div id="emptyState" class="empty-state hidden">
+          <div class="empty-icon">✓</div>
+          <h3>No tasks found</h3>
+          <p>Add a task or change your filters to see items here.</p>
+        </div>
+      </section>
+
+      <section id="progress" class="progress-card">
+        <div>
+          <p class="eyebrow">YOUR PROGRESS</p>
+          <h2>Keep moving forward</h2>
+          <p id="progressText">You have 0 completed tasks.</p>
+        </div>
+        <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow">TASK DETAILS</p>
+          <h2 id="modalTitle">Add New Task</h2>
+        </div>
+        <button class="close-btn" id="closeModalBtn" type="button" aria-label="Close">×</button>
+      </div>
+
+      <form id="taskForm" novalidate>
+        <input type="hidden" id="taskId">
+        <div class="form-group">
+          <label for="title">Task title <span>*</span></label>
+          <input id="title" name="title" maxlength="80" placeholder="e.g. Finish landing page" required>
+          <small class="error" id="titleError"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" maxlength="240" rows="3" placeholder="Add a short description..."></textarea>
+          <small class="error" id="descriptionError"></small>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="priority">Priority</label>
+            <select id="priority" name="priority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="dueDate">Due date <span>*</span></label>
+            <input id="dueDate" name="dueDate" type="date" required>
+            <small class="error" id="dateError"></small>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="secondary-btn" id="cancelBtn" type="button">Cancel</button>
+          <button class="primary-btn" type="submit">Save Task</button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>

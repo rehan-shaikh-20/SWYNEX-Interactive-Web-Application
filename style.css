@@ -1,0 +1,930 @@
+/* =========================================================
+   RESET & VARIABLES
+========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #f5f7fb;
+  --surface: #fff;
+  --text: #172033;
+  --muted: #758096;
+  --line: #e7eaf0;
+  --primary: #5b5ce2;
+  --primary-dark: #4748c7;
+  --shadow: 0 12px 35px rgba(24, 32, 55, 0.08);
+}
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Inter, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   APP LAYOUT
+========================================================= */
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+  width: 245px;
+  background: #11182a;
+  color: #fff;
+  padding: 26px 18px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  inset: 0 auto 0 0;
+}
+
+
+/* ---------------------------------------------------------
+   Brand
+--------------------------------------------------------- */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 0 8px 32px;
+}
+
+.brand-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #7475ff, #4b4ccc);
+  font-weight: 800;
+}
+
+.brand strong {
+  display: block;
+  font-size: 15px;
+  letter-spacing: 0.7px;
+}
+
+.brand span {
+  font-size: 11px;
+  color: #9ca7bc;
+}
+
+
+/* ---------------------------------------------------------
+   Sidebar Navigation
+--------------------------------------------------------- */
+
+.side-nav {
+  display: grid;
+  gap: 7px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 12px 13px;
+  color: #aeb7c9;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.nav-item.active,
+.nav-item:hover {
+  background: #202a42;
+  color: #fff;
+}
+
+
+/* ---------------------------------------------------------
+   Sidebar Note
+--------------------------------------------------------- */
+
+.sidebar-note {
+  margin-top: auto;
+  background: #1b253b;
+  border: 1px solid #2a3650;
+  border-radius: 13px;
+  padding: 15px;
+  font-size: 12px;
+  color: #9da8bb;
+}
+
+.sidebar-note strong {
+  color: #fff;
+  font-size: 13px;
+}
+
+.sidebar-note p {
+  margin-top: 5px;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.main-content {
+  margin-left: 245px;
+  width: calc(100% - 245px);
+  max-width: 1400px;
+  padding: 32px 5% 55px;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.topbar h1 {
+  font-size: 28px;
+  letter-spacing: -0.6px;
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 50%;
+  background: #e8e9ff;
+  color: var(--primary);
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   STAT CARDS
+========================================================= */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 28px;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: var(--shadow);
+}
+
+.stat-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  background: #f0f0ff;
+  color: var(--primary);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+}
+
+.stat-card span {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.stat-card strong {
+  display: block;
+  font-size: 24px;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+
+/* =========================================================
+   WORKSPACE
+========================================================= */
+
+.workspace {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  padding: 25px;
+  box-shadow: var(--shadow);
+}
+
+
+/* ---------------------------------------------------------
+   Section Header
+--------------------------------------------------------- */
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.section-head h2,
+.progress-card h2 {
+  font-size: 20px;
+}
+
+.section-head p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.primary-btn,
+.secondary-btn {
+  border: 0;
+  border-radius: 10px;
+  padding: 11px 16px;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.primary-btn {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 7px 18px rgba(91, 92, 226, 0.22);
+}
+
+.primary-btn:hover {
+  background: var(--primary-dark);
+}
+
+.secondary-btn {
+  background: #f0f2f6;
+  color: #475168;
+}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 23px 0 15px;
+}
+
+
+/* ---------------------------------------------------------
+   Search
+--------------------------------------------------------- */
+
+.search-box {
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  flex: 1;
+  max-width: 430px;
+  color: #9aa2b3;
+}
+
+.search-box input {
+  border: 0;
+  outline: 0;
+  width: 100%;
+  background: transparent;
+  font-size: 13px;
+}
+
+
+/* ---------------------------------------------------------
+   Filters
+--------------------------------------------------------- */
+
+.filters {
+  display: flex;
+  gap: 5px;
+  background: #f1f3f7;
+  border-radius: 10px;
+  padding: 4px;
+}
+
+.filter-btn {
+  border: 0;
+  background: transparent;
+  color: #788195;
+  padding: 7px 12px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.filter-btn.active {
+  background: #fff;
+  color: var(--text);
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ---------------------------------------------------------
+   Select
+--------------------------------------------------------- */
+
+.select-control {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 10px;
+  padding: 9px 11px;
+  color: #59647a;
+  font-size: 12px;
+  outline: 0;
+}
+
+
+/* =========================================================
+   TASK LIST
+========================================================= */
+
+.task-list {
+  display: grid;
+  gap: 10px;
+}
+
+.task-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 13px;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.task-card:hover {
+  border-color: #d4d6ff;
+  transform: translateY(-1px);
+}
+
+
+/* ---------------------------------------------------------
+   Task Checkbox
+--------------------------------------------------------- */
+
+.task-check {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #c9ced9;
+  border-radius: 6px;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 11px;
+}
+
+.task-card.completed .task-check {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+
+/* ---------------------------------------------------------
+   Task Content
+--------------------------------------------------------- */
+
+.task-main h3 {
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.task-card.completed h3 {
+  text-decoration: line-through;
+  color: #9299a9;
+}
+
+.task-main p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+
+
+/* ---------------------------------------------------------
+   Task Meta
+--------------------------------------------------------- */
+
+.task-meta {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+
+/* ---------------------------------------------------------
+   Priority Badges
+--------------------------------------------------------- */
+
+.badge {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 7px;
+  border-radius: 6px;
+  text-transform: capitalize;
+}
+
+.badge.high {
+  background: #fff0f0;
+  color: #d65454;
+}
+
+.badge.medium {
+  background: #fff6e8;
+  color: #c47a20;
+}
+
+.badge.low {
+  background: #edf9f1;
+  color: #31945b;
+}
+
+.due {
+  font-size: 10px;
+  color: #8a93a4;
+}
+
+
+/* ---------------------------------------------------------
+   Task Actions
+--------------------------------------------------------- */
+
+.task-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.icon-btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: #697388;
+  border-radius: 8px;
+}
+
+.icon-btn:hover {
+  background: #f5f6fa;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.empty-state {
+  text-align: center;
+  padding: 45px 20px;
+}
+
+.empty-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #eff0ff;
+  color: var(--primary);
+  display: grid;
+  place-items: center;
+  margin: 0 auto 10px;
+  font-weight: 800;
+}
+
+.empty-state h3 {
+  font-size: 15px;
+}
+
+.empty-state p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+
+/* =========================================================
+   UTILITY
+========================================================= */
+
+.hidden {
+  display: none !important;
+}
+
+
+/* =========================================================
+   PROGRESS CARD
+========================================================= */
+
+.progress-card {
+  margin-top: 18px;
+  background: #151d31;
+  color: #fff;
+  border-radius: 17px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 230px;
+  gap: 30px;
+  align-items: center;
+}
+
+.progress-card .eyebrow {
+  color: #9295ff;
+}
+
+.progress-card h2 {
+  margin-bottom: 4px;
+}
+
+.progress-card p:not(.eyebrow) {
+  font-size: 12px;
+  color: #aeb6c8;
+}
+
+.progress-track {
+  height: 10px;
+  background: #2b3650;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #7576ff, #9b9cff);
+  border-radius: 20px;
+  transition: width 0.3s;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(12, 18, 31, 0.58);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  z-index: 20;
+}
+
+.modal {
+  width: min(520px, 100%);
+  background: #fff;
+  border-radius: 17px;
+  padding: 24px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.22);
+}
+
+
+/* ---------------------------------------------------------
+   Modal Header
+--------------------------------------------------------- */
+
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.modal h2 {
+  font-size: 21px;
+}
+
+.close-btn {
+  border: 0;
+  background: #f2f3f6;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  font-size: 21px;
+  color: #697388;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.form-group label span {
+  color: #df5555;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  border: 1px solid #dfe2e9;
+  border-radius: 9px;
+  padding: 10px 11px;
+  outline: 0;
+  color: var(--text);
+  background: #fff;
+  font-size: 13px;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #8a8bfa;
+  box-shadow: 0 0 0 3px #ededff;
+}
+
+
+/* ---------------------------------------------------------
+   Form Row
+--------------------------------------------------------- */
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+
+/* ---------------------------------------------------------
+   Form Errors
+--------------------------------------------------------- */
+
+.error {
+  display: block;
+  color: #d64f59;
+  font-size: 10px;
+  min-height: 14px;
+  margin-top: 3px;
+}
+
+
+/* ---------------------------------------------------------
+   Form Actions
+--------------------------------------------------------- */
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 7px;
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  background: #172033;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 12px;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: 0.25s;
+  z-index: 30;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   TABLET — 950px
+========================================================= */
+
+@media (max-width: 950px) {
+
+  .sidebar {
+    width: 75px;
+    padding: 22px 10px;
+  }
+
+  .brand {
+    justify-content: center;
+    padding-bottom: 25px;
+  }
+
+  .brand > div:last-child,
+  .nav-item span,
+  .sidebar-note {
+    display: none;
+  }
+
+  .nav-item {
+    justify-content: center;
+  }
+
+  .main-content {
+    margin-left: 75px;
+    width: calc(100% - 75px);
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* =========================================================
+   MOBILE — 650px
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .main-content {
+    padding: 22px 15px 40px;
+  }
+
+  .topbar h1 {
+    font-size: 23px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .workspace {
+    padding: 18px;
+  }
+
+  .section-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .toolbar {
+    flex-wrap: wrap;
+  }
+
+  .search-box {
+    max-width: none;
+    order: 0;
+    flex-basis: 100%;
+  }
+
+  .filters {
+    flex: 1;
+  }
+
+  .select-control {
+    flex: 1;
+  }
+
+  .task-card {
+    grid-template-columns: auto 1fr;
+  }
+
+  .task-actions {
+    grid-column: 2;
+  }
+
+  .progress-card {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .modal {
+    padding: 19px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE — 430px
+========================================================= */
+
+@media (max-width: 430px) {
+
+  .sidebar {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .stats-grid {
+    gap: 9px;
+  }
+
+  .stat-card {
+    padding: 14px;
+  }
+
+  .stat-card strong {
+    font-size: 20px;
+  }
+
+  .stat-card span {
+    font-size: 10px;
+  }
+
+  .filters {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .filter-btn {
+    flex: 1;
+  }
+
+  .select-control {
+    width: 100%;
+    flex-basis: 100%;
+  }
+}
